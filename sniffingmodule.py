@@ -1,6 +1,5 @@
 import pyshark
 import joblib
-import requests
 
 model = joblib.load('intrusion_detector_new.joblib')
 
@@ -75,10 +74,6 @@ for pkt in capture:
             values = [packet_data[key] for key in detection_attributes]
             prediction = model.predict([values])
             prediction = 'Benign' if prediction == [0] else 'Malicious'
-            if(prediction=="Malicious"){
-                resp=requests.post("http://localhost:8000/")
-                
-            }
         except (KeyError, ValueError, TypeError) as e:
             prediction = f"Prediction Error: {e}"
 
