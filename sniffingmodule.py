@@ -1,19 +1,28 @@
 import pyshark
 import joblib
+import requests
 
+global model
 model = joblib.load('intrusion_detector_new.joblib')
 
+global conn_state_mapping
 conn_state_mapping = {
     '0x0000': 0, '0x0010': 6, '0x0020': 7, '0x0030': 8,
     '0x0040': 9, '0x0050': 10, '0x0060': 1, '0x0070': 2,
     '0x0080': 3, '0x0090': 4, '0x00A0': 5
 }
 
+global proto_mapping
 proto_mapping = {'icmp': 0, 'tcp': 1, 'udp': 2}
+
+async def send_for_analysis(details):
+    resp=await requests.post("http://localhost:8000/analyze", json=details)
+    resp=resp.content
+    return resp
 
 try:
     # Capture network traffic on the first available network interface
-    capture = pyshark.LiveCapture(interface="Ethernet 2")
+    capture = pyshark.LiveCapture(interface="Wi-Fi")
 except pyshark.capture.capture.TSharkNotFoundException:
     print("TShark not found. Please ensure Wireshark is installed and in PATH.")
     exit(1)
@@ -74,6 +83,9 @@ for pkt in capture:
             values = [packet_data[key] for key in detection_attributes]
             prediction = model.predict([values])
             prediction = 'Benign' if prediction == [0] else 'Malicious'
+            if(prediction=="Malicious"):
+                resp=send_for_analysis(packet_data)
+                print(resp)
         except (KeyError, ValueError, TypeError) as e:
             prediction = f"Prediction Error: {e}"
 

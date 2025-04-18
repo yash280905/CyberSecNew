@@ -22,9 +22,8 @@ llm=ChatOllama(
 
 pipline=prompt|llm
 
-
-@app.post("/{packet_details}")
-def givedet(packet_details: str):
-    packet_details=eval(packet_details)
+@app.post("/analyze")
+def givedet(packet_details: dict):
     response=pipline.invoke({"details": packet_details})
     print(response)
+    return response
