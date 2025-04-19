@@ -1,8 +1,7 @@
 
 Intrusion Detection System (IDS) Project
 
-This is  built by our team to detect bad stuff (like cyberattacks) happening on a computer network. Think of it as a security guard for the internet! We’ve combined machine learning, live traffic sniffing, and a smart language model to make it work. Here’s a simple guide to understand what we’ve done and how to use it.
-
+This is  built by our team to detect bad stuff (like cyberattacks) happening on a computer network. Think of it as a security guard for the internet! We’ve combined machine learning, live traffic sniffing, and a smart language model to make it work. 
 What Does This Project Do?
 - Spot Threats : It checks network packets (tiny data pieces traveling online) to see if they’re normal or harmful.
 - Learn from Data : Uses a machine learning model to figure out what’s suspicious.
