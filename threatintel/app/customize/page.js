@@ -46,7 +46,7 @@ function customize() {
                 value={ip}
                 onChange={(e) => setIp(e.target.value)}
                 placeholder="Enter IP address (e.g., 192.168.1.1)"
-                className="w-full p-3 rounded bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-blue-500"
+                className="w-3/4 p-3 rounded bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-blue-500"
                 required
               />
             </div>
@@ -60,7 +60,7 @@ function customize() {
                 onChange={(e) => setPrompt(e.target.value)}
                 placeholder="Type your custom LLM prompt here..."
                 rows={5}
-                className="w-full p-3 rounded bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-blue-500"
+                className="w-3/4 p-3 rounded bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-blue-500"
                 required
               ></textarea>
             </div>
@@ -68,7 +68,7 @@ function customize() {
   
           <button
             type="submit"
-            className="mt-6 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 rounded-xl text-lg font-bold hover:scale-105 transition-transform duration-300"
+            className="mt-6 w-3/4 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 rounded-xl text-lg font-bold hover:scale-102 transition-transform duration-300"
           >
             Submit
           </button>
