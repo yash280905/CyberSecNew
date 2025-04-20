@@ -23,6 +23,23 @@ const Detcard = ({ detection }) => {
           console.error('Error:', error);
         }
       };
+    const cyberRep= async (email, message) => {
+      
+        const res = await fetch("/api/reportCell", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, message }),
+        });
+      
+        // Optional: alert user or reset form
+        if (res.ok) {
+          alert("Thank you for your report!");
+        } else {
+          alert("Oops! Something went wrong.");
+        }
+      };
 
     return (
         <div className="border rounded p-4 shadow my-4">
@@ -44,9 +61,15 @@ const Detcard = ({ detection }) => {
                 </button>
                 <button
                     onClick={() => deleteDet(detection._id)}
-                    className="bg-red-500 text-white px-2 py-1 rounded focus:outline-none"
+                    className="bg-red-500 text-white px-2 py-1 rounded mr-2 focus:outline-none"
                 >
                     Delete
+                </button>
+                <button
+                    onClick={() => cyberRep("abhipsitb16@gmail.com", "I am a user of Sanjay Application \n The application has detected the following which might be a potential threat \n" + detection.details + '\n'+ detection.interpretation)}
+                    className="bg-yellow-500 text-white px-2 py-1 rounded focus:outline-none"
+                >
+                    Report to Cyber Cell
                 </button>
             </div>
             {showDetails && (
