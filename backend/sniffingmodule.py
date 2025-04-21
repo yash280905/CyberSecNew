@@ -3,7 +3,7 @@ import joblib
 import requests
 
 global model
-model = joblib.load('intrusion_detector_new.joblib')
+model = joblib.load('intrusion_detector_modified.joblib')
 
 global conn_state_mapping
 conn_state_mapping = {
@@ -33,7 +33,7 @@ except Exception as e:
 # Initialize results list
 results = []
 
-detection_attributes = ['ts', 'originPort', 'respPort', 'proto', 'duration', 'orig_bytes',
+detection_attributes = ['ts', 'proto', 'duration', 'orig_bytes',
                         'conn_state', 'orig_pkts', 'orig_ip_bytes']
 
 # Iterate over captured packets
