@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-function customize() {
+function Customize() {
     const [activeTab, setActiveTab] = useState('ip');
     const [ip, setIp] = useState('');
     const [prompt, setPrompt] = useState('');
@@ -77,4 +77,4 @@ function customize() {
   )
 }
 
-export default customize
+export default Customize

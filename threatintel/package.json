@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "framer-motion": "^12.7.4",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "jest-environment-jsdom": "^29.7.0",
     "tailwindcss": "^4"
   }
 }
